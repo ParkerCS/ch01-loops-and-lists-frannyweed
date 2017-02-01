@@ -3,8 +3,7 @@
 #you should also write code to test them. For practice, you should also comment your
 #functions as explained above.
 
-
-
+import random
 #PROBLEM 1 (8-ball - 5pts)
 # A magic 8-ball, when asked a question, provides a random answer from a list.
 # The code below contains a list of possible answers. Create a magic 8-ball program that
@@ -16,13 +15,30 @@ yes", "Most likely", "Outlook good", "Yes", "Signs point to yes",
 now", "Cannot predict now", "Concentrate and ask again", "Don ' t \
 count on it", "My reply is no", "My sources say no", "Outlook \
 not so good", "Very doubtful" ]
-
+def magic(ask):
+    i = (random.randrange(len(answer_list)))
+    print(answer_list[i])
+magic(input("Ask the magic 8-ball a question: "))
 
 # PROBLEM 2 (Shuffle - 5pts)
 # A playing card consists of a suit (Heart, Diamond, Club, Spade) and a value (2,3,4,5,6,7,8,9,10,J,Q,K,A).
 # Create a list of all possible playing cards, which is a deck.
 # Then create a function that shuffles the deck, producing a random order.
+shuffled = []
+cards = []
+suit = ["Heart", "Diamond", "Club", "Spade"]
+value = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+for f in range(len(suit)):
+    for e in range(len(value)):
+        cards.append([suit[f],value[e]])
 
+def shuffle():
+    for i in range(len(cards)):
+        order = random.randrange(len(cards))
+        shuffled.append(cards[order])
+        del[cards[order]]
+shuffle()
+print(shuffled)
 
 # PROBLEM 3 (The sieve of Eratosthenes - 10pts)
 # The sieve of Eratosthenes is a method to find all prime numbers between
@@ -36,7 +52,21 @@ not so good", "Very doubtful" ]
 # Process all the numbers of the list in this way. When you have finished,
 # the only numbers left on the list are primes.
 # Use this method to determine all the primes between 1 and 1000.
+sequence = []
+number = int(input("Enter a number: "))
+for i in range(1,number+1):
+    sequence.append(i)
+print(sequence)
+def prime():
+    sequence[0] = 0
+    for j in range(len(sequence)):
+        if sequence[j] != 0:
+            for k in range(1,number + 1):
+                if sequence[k] % sequence[j] == 0:
+                    sequence[k] = 0
 
+prime()
+print(sequence)
 # PROBLEM 4 (Tic-Tac-Toe - 15pts)
 # Write a Tic-Tac-Toe program that allows two people to play the game against each other.
 # In turn, ask each player which row and column they want to play.
