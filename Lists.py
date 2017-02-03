@@ -56,17 +56,24 @@ sequence = []
 number = int(input("Enter a number: "))
 for i in range(1,number+1):
     sequence.append(i)
-print(sequence)
+primes = []
+
 def prime():
-    sequence[0] = 0
-    for j in range(len(sequence)):
+    sequence[0]= 0
+    for j in range(1,len(sequence)-1):
         if sequence[j] != 0:
-            for k in range(1,number + 1):
-                if sequence[k] % sequence[j] == 0:
-                    sequence[k] = 0
+            for k in range(1,number):
+                if sequence[k] != 0 and sequence[k] != sequence[j]:
+                    if sequence[k] % sequence[j] == 0:
+                        sequence[k] = 0
+    for a in range(len(sequence)):
+        if sequence[a] != 0:
+            primes.append(sequence[a])
 
 prime()
-print(sequence)
+print(primes)
+print("The prime numbers from 1 to " + str(number) + " are " + str(primes))
+
 # PROBLEM 4 (Tic-Tac-Toe - 15pts)
 # Write a Tic-Tac-Toe program that allows two people to play the game against each other.
 # In turn, ask each player which row and column they want to play.
@@ -84,9 +91,48 @@ print(sequence)
 # pass to a function as an argument if the function needs it.
 # I also use a function opponent(), that takes the player as argument and returns
 # the opponent. I use that to switch players after each move.
+row = [1,2,3]
+column = [1,2,3]
+options = []
+choice = []
+move = []
+def display_board():
+    for i in range(6):
+        if i == 0 or i == 5 or i %2 == 0:
+            print((" " * 4 + "|")*2 + " "*4)
+        elif i != 0 and i != 5 and i % 2 == 1:
+            print(("_" * 4 + "|")*2 + "_"*4)
+display_board()
 
-# The main program will be something along the lines of (in pseudo-code):
-# display board
+for k in range(len(row)):
+    for m in range(len(column)):
+        options.append([row[k], column[m]])
+print(options)
+
+round = -1
+round +=1
+ask_row = int(input("Select a row: "))
+ask_column = int(input("Select a column: "))
+move.append([ask_row, ask_column])
+choice.append([ask_row, ask_column])
+done = False
+while not done:
+    ask_row = int(input("Select a row: "))
+    ask_column = int(input("Select a column: "))
+    choice.append([ask_row, ask_column])
+    for j in range(len(move)):
+        if choice[round] == move[j]:
+            print("That spot has already been taken. Try again")
+            round -= 1
+            del (choice[round])
+            #break
+        else:
+            move.append([ask_row, ask_column])
+    for n in range(len(options)):
+        if options[n] == move[round]:
+
+
+
 # while True:
 #   ask for row
 #   ask for column
