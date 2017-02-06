@@ -93,45 +93,167 @@ print("The prime numbers from 1 to " + str(number) + " are " + str(primes))
 # the opponent. I use that to switch players after each move.
 row = [1,2,3]
 column = [1,2,3]
-options = []
-choice = []
 move = []
+
+options = []
+display = [(" " * 7 + "|"),(" " * 7 + "|"),(" " * 7),(" " * 7 + "|"),(" " * 7 + "|"),(" " * 7),(" " * 7 + "|"), (" " * 7 + "|"),(" " * 7),(" " * 7 + "|") * 2 + " " *7]
+player_1 = []
+player_2 = []
+
+def plays():
+    v2 = (" " * 7 + "|")
+    v3 = (" " * 7 + "|")
+    v4 = (" " * 7)
+    v5 = (" " * 7 + "|")
+    v6 = (" " * 7 + "|")
+    v7 = (" " * 7)
+    v8 = (" " * 7 + "|")
+    v9 = (" " * 7 + "|")
+    v10 = (" " * 7)
+    if move[round] == [1,1]:
+        if round % 2 == 0:
+            v2 = " " * 3 + "x" + " " * 3 + "|"
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v2 = " " * 3 + "o" + " " * 3 + "|"
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(0)
+        display.insert(0,v2)
+    if move[round] == [1,2]:
+        if round % 2 == 0:
+            v3 = " " * 3 + "x" + " " * 3 + "|"
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v3 = " " * 3 + "o" + " " * 3 + "|"
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(1)
+        display.insert(1,v3)
+    if move[round] == [1,3]:
+        if round % 2 == 0:
+            v4 = " " * 3 + "x" + " " * 3
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v4 = " " * 3 + "o" + " " * 3
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(2)
+        display.insert(2,v4)
+    if move[round] == [2, 1]:
+        if round % 2 == 0:
+            v5 = " " * 3 + "x" + " " * 3 + "|"
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v5 = " " * 3 + "o" + " " * 3 + "|"
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(3)
+        display.insert(3,v5)
+    if move[round] == [2,2]:
+        if round % 2 == 0:
+            v6 = " " * 3 + "x" + " " * 3 + "|"
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v6 = " " * 3 + "o" + " " * 3 + "|"
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(4)
+        display.insert(4,v6)
+    if move[round] == [2,3]:
+        if round % 2 == 0:
+            v7 = " " * 3 + "x" + " " * 3
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v7 = " " * 3 + "o" + " " * 3
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(5)
+        display.insert(5,v7)
+    if move[round] == [3,1]:
+        if round % 2 == 0:
+            v8 = " " * 3 + "x" + " " * 3 + "|"
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v8 = " " * 3 + "o" + " " * 3 + "|"
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(6)
+        display.insert(6,v8)
+    if move[round] == [3,2]:
+        if round % 2 == 0:
+            v9 = " " * 3 + "x" + " " * 3 + "|"
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v9 = " " * 3 + "o" + " " * 3 + "|"
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(7)
+        display.insert(7,v9)
+    if move[round] == [3,3]:
+        if round % 2 == 0:
+            v10 = " " * 3 + "x" + " " * 3
+            player_1.append([[ask_row],[ask_column]])
+        elif round % 2 == 1:
+            v10 = " " * 3 + "o" + " " * 3
+            player_2.append([[ask_row],[ask_column]])
+        display.pop(8)
+        display.insert(8,v10)
+    print(player_1)
+    print(player_2)
+
 def display_board():
-    for i in range(6):
-        if i == 0 or i == 5 or i %2 == 0:
-            print((" " * 4 + "|")*2 + " "*4)
-        elif i != 0 and i != 5 and i % 2 == 1:
-            print(("_" * 4 + "|")*2 + "_"*4)
-display_board()
+    for l in range(9):
+        if l == 2 or l == 5:
+            print("_" * 7 + "|"+ "_" * 7 + "|"+ "_" * 7)
+        elif l == 1:
+            print(display[0] + display[1] + display[2])
+        elif l == 4:
+            print(display[3] + display[4] + display[5])
+        elif l == 7:
+            print(display[6] + display[7] + display[8])
+        else:
+            print(display[9])
 
-for k in range(len(row)):
-    for m in range(len(column)):
-        options.append([row[k], column[m]])
-print(options)
-
+def check(test, which):
+    player = False
+    for m in range(len(test)):
+        for k in range(len(test)):
+            for l in range(len(test)):
+                if test[l][0] == test[m][0] == move[k][0] and test[l] != test[m] and test[l] != test[k] and test[k] != test[m]:
+                    player = True
+                elif test[l][1] == test[m][1] == test[k][1] and test[l] != test[m] and test[l] != test[k] and test[k] != test[m]:
+                    player = True
+                if test[m] == [[2], [2]]:
+                    if test[l] == [[1], [1]] and test[k] == [[3], [3]] or test[l] == [[1], [3]] and test[k] == [[3],[1]]:
+                        player = True
+    if player == True:
+        print(str(which) + " won")
+        won = True
 round = -1
-round +=1
-ask_row = int(input("Select a row: "))
-ask_column = int(input("Select a column: "))
-move.append([ask_row, ask_column])
-choice.append([ask_row, ask_column])
-done = False
-while not done:
+player1_won = False
+player2_won = False
+okay = False
+show = False
+won = False
+
+while True:
     ask_row = int(input("Select a row: "))
     ask_column = int(input("Select a column: "))
-    choice.append([ask_row, ask_column])
+    round += 1
+    if round == 0:
+        move.append([ask_row,ask_column])
+        plays()
+        display_board()
+        continue
     for j in range(len(move)):
-        if choice[round] == move[j]:
+        if move[j] == [ask_row, ask_column]:
             print("That spot has already been taken. Try again")
             round -= 1
-            del (choice[round])
-            #break
+            okay = False
         else:
-            move.append([ask_row, ask_column])
-    for n in range(len(options)):
-        if options[n] == move[round]:
-
-
+            okay = True
+            show = True
+    if okay == True:
+        move.append([ask_row, ask_column])
+    plays()
+    display_board()
+    check(player_1, "Player one")
+    check(player_2, "Player two")
+    if won:
+        break
 
 # while True:
 #   ask for row
@@ -147,27 +269,3 @@ while not done:
 #       announce draw
 #       break
 #   switch player
-
-# CHALLENGE PROBLEM 5 (Battleship NO CREDIT, JUST IF YOU WANT TO TRY IT)
-# Create a program that is a simplified version of the game “Battleship.”
-# The computer creates (in memory) a grid that is 4 cells wide and 3 cells high.
-# The rows of the grid are numbered 1 to 3, and the columns of the grid are labeled A to D.
-# The computer hides a battleship in three random cells in the grid.
-# Each battleship occupies exactly one cell.
-# Battleships are not allowed to touch each other horizontally or vertically.
-# Make sure that the program places the battleships randomly, so not pre-configured.
-# The computer asks the player to “shoot” at cells of the grid.
-# The player does so by entering the column letter and row number of the cell
-# which she wants to shoot at (e.g., "D3").
-# If the cell which the player shoots at contains nothing, the computer responds with “Miss!”
-#  If the cell contains a battleship, the computer responds with “You sunk my battleship!”
-# and removes the battleship from the cell (i.e., a second shot at the same cell is a miss).
-# As soon as the player hits the last battleship, the computer responds with displaying
-# how many shots the player needed to shoot down all three battleships, and the program ends.
-# To help with debugging the game, at the start the computer should display the grid with
-# O's marking empty cells and X's marking cells with battleships.
-# Hint: If you have troubles with this exercise, start by using a board which has the
-# battleships already placed.
-# Once the rest of the code works, add a function that places the battleships at random,
-# at first without checking if they are touching one another.
-# Once that works, add code that disallows battleships touching each other.
