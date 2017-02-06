@@ -94,6 +94,9 @@ print("The prime numbers from 1 to " + str(number) + " are " + str(primes))
 row = [1,2,3]
 column = [1,2,3]
 move = []
+won = False
+player1_won = False
+player2_won = False
 
 options = []
 display = [(" " * 7 + "|"),(" " * 7 + "|"),(" " * 7),(" " * 7 + "|"),(" " * 7 + "|"),(" " * 7),(" " * 7 + "|"), (" " * 7 + "|"),(" " * 7),(" " * 7 + "|") * 2 + " " *7]
@@ -113,86 +116,84 @@ def plays():
     if move[round] == [1,1]:
         if round % 2 == 0:
             v2 = " " * 3 + "x" + " " * 3 + "|"
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v2 = " " * 3 + "o" + " " * 3 + "|"
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(0)
         display.insert(0,v2)
     if move[round] == [1,2]:
         if round % 2 == 0:
             v3 = " " * 3 + "x" + " " * 3 + "|"
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v3 = " " * 3 + "o" + " " * 3 + "|"
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(1)
         display.insert(1,v3)
     if move[round] == [1,3]:
         if round % 2 == 0:
             v4 = " " * 3 + "x" + " " * 3
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v4 = " " * 3 + "o" + " " * 3
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(2)
         display.insert(2,v4)
     if move[round] == [2, 1]:
         if round % 2 == 0:
             v5 = " " * 3 + "x" + " " * 3 + "|"
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v5 = " " * 3 + "o" + " " * 3 + "|"
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(3)
         display.insert(3,v5)
     if move[round] == [2,2]:
         if round % 2 == 0:
             v6 = " " * 3 + "x" + " " * 3 + "|"
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v6 = " " * 3 + "o" + " " * 3 + "|"
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(4)
         display.insert(4,v6)
     if move[round] == [2,3]:
         if round % 2 == 0:
             v7 = " " * 3 + "x" + " " * 3
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v7 = " " * 3 + "o" + " " * 3
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(5)
         display.insert(5,v7)
     if move[round] == [3,1]:
         if round % 2 == 0:
             v8 = " " * 3 + "x" + " " * 3 + "|"
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v8 = " " * 3 + "o" + " " * 3 + "|"
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(6)
         display.insert(6,v8)
     if move[round] == [3,2]:
         if round % 2 == 0:
             v9 = " " * 3 + "x" + " " * 3 + "|"
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v9 = " " * 3 + "o" + " " * 3 + "|"
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(7)
         display.insert(7,v9)
     if move[round] == [3,3]:
         if round % 2 == 0:
             v10 = " " * 3 + "x" + " " * 3
-            player_1.append([[ask_row],[ask_column]])
+            player_1.append([ask_row, ask_column])
         elif round % 2 == 1:
             v10 = " " * 3 + "o" + " " * 3
-            player_2.append([[ask_row],[ask_column]])
+            player_2.append([ask_row, ask_column])
         display.pop(8)
         display.insert(8,v10)
-    print(player_1)
-    print(player_2)
 
 def display_board():
     for l in range(9):
@@ -207,27 +208,22 @@ def display_board():
         else:
             print(display[9])
 
-def check(test, which):
-    player = False
+def check(test):
     for m in range(len(test)):
         for k in range(len(test)):
             for l in range(len(test)):
-                if test[l][0] == test[m][0] == move[k][0] and test[l] != test[m] and test[l] != test[k] and test[k] != test[m]:
-                    player = True
-                elif test[l][1] == test[m][1] == test[k][1] and test[l] != test[m] and test[l] != test[k] and test[k] != test[m]:
-                    player = True
-                if test[m] == [[2], [2]]:
-                    if test[l] == [[1], [1]] and test[k] == [[3], [3]] or test[l] == [[1], [3]] and test[k] == [[3],[1]]:
-                        player = True
-    if player == True:
-        print(str(which) + " won")
-        won = True
+                if test[l][0] == test[m][0] == test[k][0] and test[l][1] != test[m][1] and test[l][1] != test[k][1] and test[k][1] != test[m][1]:
+                    return True
+                elif test[l][1] == test[m][1] == test[k][1] and test[l][1] != test[m][1] and test[l][1] != test[k][1] and test[k][1] != test[m][1]:
+                    return True
+                if test[m] == [2, 2]:
+                    if test[l] == [1, 1] and test[k] == [3,3] or test[l] == [1,3] and test[k] == [3,1]:
+                        return True
+    return False
+
 round = -1
-player1_won = False
-player2_won = False
 okay = False
 show = False
-won = False
 
 while True:
     ask_row = int(input("Select a row: "))
@@ -242,30 +238,20 @@ while True:
         if move[j] == [ask_row, ask_column]:
             print("That spot has already been taken. Try again")
             round -= 1
-            okay = False
+            continue
         else:
             okay = True
             show = True
-    if okay == True:
-        move.append([ask_row, ask_column])
+    move.append([ask_row, ask_column])
     plays()
     display_board()
-    check(player_1, "Player one")
-    check(player_2, "Player two")
-    if won:
-        break
-
-# while True:
-#   ask for row
-#   ask for column
-#       if row/column already occupied:
-#           display error
-#   place player marker in row/col
-#   display board
-#   check for winner:
-#       announce winner
-#       break
-#   check board full:
-#       announce draw
-#       break
-#   switch player
+    if round % 2 == 0:
+        check(player_1)
+        if check(player_1) == True:
+            print("Player 1 won!")
+            break
+    if round % 2 == 1:
+        check(player_2)
+        if check(player_2) == True:
+            print("Player 2 won!")
+            break
