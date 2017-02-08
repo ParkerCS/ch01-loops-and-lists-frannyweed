@@ -1,3 +1,8 @@
+'''
+You forgot to put the check for "e" in vowel checker.
+
+'''
+
 #CONDITIONS (15PTS TOTAL)
 
 # PROBLEM 1 (GPA - 4pts)

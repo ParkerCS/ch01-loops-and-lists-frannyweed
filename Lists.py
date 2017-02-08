@@ -1,3 +1,15 @@
+'''
+You will become more efficient.
+When you feel like the work is redundant, stop coding
+and lay out a plan.  Let the pseudo code guide you.
+Remember the DRY principle.
+I am impressed that you are persistent enough and
+have the capacity to get it working as well as you did
+using the techniques you did.
+However, eventually this would become too unwieldy to track.
+
+'''
+
 #LISTS (35PTS TOTAL)
 #In these exercises you write functions. Of course, you should not only write the functions,
 #you should also write code to test them. For practice, you should also comment your
